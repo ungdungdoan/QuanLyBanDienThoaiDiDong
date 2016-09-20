@@ -1,0 +1,18 @@
+package Test;
+
+import java.sql.Connection;
+
+import db.Database;
+
+public class ConnectDB {
+	 public static void main(String[] args) {
+		 System.out.println("Get connection ... ");
+		 
+	      // Lấy ra đối tượng Connection kết nối vào database.
+	      Connection conn = Database.getConnection();
+	 
+	      System.out.println("Get connection " + conn);
+	 
+	      System.out.println("Done!");
+	}
+}
