@@ -36,7 +36,7 @@ public class FrmDienThoai extends JFrame implements ActionListener {
 	private JTextField txtcauHinh;
 
 	public FrmDienThoai(){
-		setTitle("Thong tin dien thoai");
+		setTitle("ThÃ´ng tin Ä‘iá»‡n thoáº¡i");
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -51,42 +51,42 @@ public class FrmDienThoai extends JFrame implements ActionListener {
 		b.add(Box.createVerticalStrut(10));b.add(b6 = Box.createHorizontalBox());
 		b.add(Box.createVerticalStrut(10));b.add(b7 = Box.createHorizontalBox());
 		JLabel lblTieuDe;
-		b1.add(lblTieuDe = new JLabel("THÔNG TIN ĞIÊòN THOAòI", JLabel.CENTER));
+		b1.add(lblTieuDe = new JLabel("THÃ”NG TIN ÄIá»†N THOáº I", JLabel.CENTER));
 		lblTieuDe.setFont(new Font("Arila", Font.BOLD, 26) );
 		JLabel lblmaDT;
-		b2.add(lblmaDT = new JLabel("MaŞ ğiêòn thoaòi",JLabel.RIGHT));
+		b2.add(lblmaDT = new JLabel("MÃ£ Ä‘iá»‡n thoáº¡i",JLabel.RIGHT));
 		
 		b2.add(txtmaDT = new JTextField());
 		JLabel lbltenDT;
-		b3.add(lbltenDT = new JLabel("Tên ğiêòn thoaòi",JLabel.RIGHT));
+		b3.add(lbltenDT = new JLabel("TÃªn Ä‘iá»‡n thoáº¡i",JLabel.RIGHT));
 	
 		b3.add(txttenDT= new JTextField());
 		JLabel lblNSX;
-		b4.add(lblNSX = new JLabel("NhaÌ saÒn xuâìt",JLabel.RIGHT));
+		b4.add(lblNSX = new JLabel("NhÃ  sáº£n xuáº¥t",JLabel.RIGHT));
 		
 		b4.add(txtNSX = new JTextField());
 		JLabel lblcauHinh;
-		b5.add(lblcauHinh = new JLabel("Câìu hiÌnh",JLabel.RIGHT));
+		b5.add(lblcauHinh = new JLabel("Cáº¥u hÃ¬nh",JLabel.RIGHT));
 		
 		b5.add(txtcauHinh = new JTextField());
 		b6.add(Box.createHorizontalStrut(70));
 		JButton btnThem;
-		b6.add(btnThem = new JButton("Thêm"));
+		b6.add(btnThem = new JButton("ThÃªm"));
 		JButton btnSua;
-		b6.add(btnSua = new JButton("SıÒa"));
+		b6.add(btnSua = new JButton("Sá»¯a"));
 		JButton btnXoa;
-		b6.add(btnXoa = new JButton("Xoìa"));
-		String[] tieude = {"MaŞ Ğiêòn Thoaòi", "Tên Ğiêòn Thoaòi", "NhaÌ SaÒn Xuâìt", "Câìu hiÌnh"};
+		b6.add(btnXoa = new JButton("XÃ³a"));
+		String[] tieude = {"MÃ£ Ä‘iá»‡n thoáº¡i", "TÃªn Ãiá»‡n thoáº¡i", "NhÃ  sáº£n xuáº¥t", "Cáº¥u hÃ¬nh","GiÃ¡"};
 		
 		DefaultTableModel dataModel;
 		b7.add(croll = new JScrollPane(table = new JTable(dataModel = new DefaultTableModel(tieude , 0))) );
-		croll.setBorder(BorderFactory.createTitledBorder("Danh saìch ğiêòn thoaòi"));
+		croll.setBorder(BorderFactory.createTitledBorder("Danh sÃ¡ch Ä‘iá»‡n thoáº¡i"));
 	}
 	public FrmDienThoai(NhaSanXuat nsx){
 		this();
 		this.nsx = nsx;
 		
-		croll.setBorder(BorderFactory.createTitledBorder("Danh saìch ğiêòn thoaòi cuÒa nhaÌ saÒn xuâìt hiêòn taòi: " + nsx.getTenNSX()));
+		croll.setBorder(BorderFactory.createTitledBorder("Danh sÃ¡ch Ä‘iá»‡n thoáº¡i theo nhÃ  sáº£n xuáº¥t: " + nsx.getTenNSX()));
 		for(DienThoai dt : nsx.getDsDienThoai()){
 			Object[] rowData = {dt.getMaDT(), dt.getTenDT(), dt.getCauHinh()};
 			DefaultTableModel dataModel = null;
