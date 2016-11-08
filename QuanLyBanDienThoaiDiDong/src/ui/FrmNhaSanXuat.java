@@ -154,37 +154,52 @@ public class FrmNhaSanXuat extends JFrame implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 	Object o = e.getSource();
 	if(o.equals(btnThem)){
-		if(btnThem.getText().equalsIgnoreCase("Them")){
+		if(btnThem.getText().equalsIgnoreCase("Thêm")){
 			moKhoaTextfields(true);
 			moKhoaControls(false);
 			btnLuu.setEnabled(true);
 			btnThem.setEnabled(true);
 			xoaRongTextfields();
-			btnThem.setText("Huy");
+			btnThem.setText("Hủy");
 		}
-		else if(btnThem.getText().equalsIgnoreCase("Huy")){
+		else if(btnThem.getText().equalsIgnoreCase("Hủy")){
 			moKhoaTextfields(false);
 			moKhoaControls(true);
 			btnLuu.setEnabled(false);
-			btnThem.setText("Them");
+			btnThem.setText("Thêm");
 			napdulieuVaoTextfields();
 			}
 
 		}
 	else if(o.equals(btnSua)){
-		if(btnSua.getText().equalsIgnoreCase("Sua")){
+		if(btnSua.getText().equalsIgnoreCase("Sửa")){
 			moKhoaTextfields(true);
 			txtMaNSX.setEditable(false);
 			moKhoaControls(false);
 			btnLuu.setEnabled(true);
 			btnSua.setEnabled(true);
-			btnSua.setText("Huy");
-		}else if(btnSua.getText().equalsIgnoreCase("Huy")){
+			btnSua.setText("Hủy");
+		}else if(btnSua.getText().equalsIgnoreCase("Hủy")){
 			moKhoaTextfields(false);
 			moKhoaControls(true);
 			btnLuu.setEnabled(false);
-			btnSua.setText("Sua");
+			btnSua.setText("Sửa");
 			napdulieuVaoTextfields();
+			}
+		}
+		else if(o.equals(btnLuu)){
+		if(btnThem.getText().equalsIgnoreCase("Hủy")){
+			NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
+			if(nsx.create()){
+				Object[] rowData = {txtMaNSX.getText(), txtTenNSX.getText()};
+				dataModel.addRow(rowData);
+
+				moKhoaTextfields(false);
+				moKhoaControls(true);
+				btnLuu.setEnabled(false);
+				btnThem.setText("Thêm");
+
+			
 			}
 		}
 	
