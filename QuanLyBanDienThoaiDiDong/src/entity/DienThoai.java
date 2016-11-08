@@ -136,5 +136,23 @@ public class DienThoai {
 		}
 		return n >0;
 	}
-	
+	public boolean update() {
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("update DienThoai set TenDT = ?, CauHinh = ?, Gia=? where MaDT = ?");
+			stmt.setString(1, tenDT);
+			stmt.setString(2, cauHinh);		
+			stmt.setInt(3, Gia);
+			stmt.setString(4, maDT);
+		
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n > 0;
+	}
 }
