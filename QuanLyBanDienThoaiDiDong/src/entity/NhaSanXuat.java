@@ -57,9 +57,6 @@ public class NhaSanXuat {
 		
 	}
 	
-
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,5 +85,22 @@ public class NhaSanXuat {
 		} else if (!tenNSX.equals(other.tenNSX))
 			return false;
 		return true;
+	}
+	public boolean create() {
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("insert into NhaSanXuat values(?,?)");
+			stmt.setString(1, maNSX);
+			stmt.setString(2, tenNSX);
+		
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n > 0; 
 	}
 }
