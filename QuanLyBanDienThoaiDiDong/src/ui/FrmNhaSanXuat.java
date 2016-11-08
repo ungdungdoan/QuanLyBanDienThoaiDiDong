@@ -112,5 +112,9 @@ public class FrmNhaSanXuat extends JFrame implements ActionListener{
 		btnXoa.setEnabled(b);
 		btnXemDSDT.setEnabled(b);
 		}
+	private void moKhoaTextfields(boolean b) {
+		txtMaNSX.setEditable(b);
+		txtTenNSX.setEditable(b);
+	}
 
 }
