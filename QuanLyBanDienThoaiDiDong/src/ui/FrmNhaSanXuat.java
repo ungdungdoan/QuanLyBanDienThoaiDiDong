@@ -116,5 +116,10 @@ public class FrmNhaSanXuat extends JFrame implements ActionListener{
 		txtMaNSX.setEditable(b);
 		txtTenNSX.setEditable(b);
 	}
+	private void xoaRongTextfields() {
+		txtMaNSX.setText("");
+		txtTenNSX.setText("");
+		txtMaNSX.requestFocus();
+	}
 
 }
