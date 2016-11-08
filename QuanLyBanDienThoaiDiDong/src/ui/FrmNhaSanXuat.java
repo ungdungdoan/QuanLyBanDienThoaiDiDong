@@ -171,6 +171,22 @@ public void actionPerformed(ActionEvent e) {
 			}
 
 		}
+	else if(o.equals(btnSua)){
+		if(btnSua.getText().equalsIgnoreCase("Sua")){
+			moKhoaTextfields(true);
+			txtMaNSX.setEditable(false);
+			moKhoaControls(false);
+			btnLuu.setEnabled(true);
+			btnSua.setEnabled(true);
+			btnSua.setText("Huy");
+		}else if(btnSua.getText().equalsIgnoreCase("Huy")){
+			moKhoaTextfields(false);
+			moKhoaControls(true);
+			btnLuu.setEnabled(false);
+			btnSua.setText("Sua");
+			napdulieuVaoTextfields();
+			}
+		}
 	
 	}
 
