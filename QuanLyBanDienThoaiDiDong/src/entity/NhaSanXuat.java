@@ -103,4 +103,21 @@ public class NhaSanXuat {
 		}
 		return n > 0; 
 	}
+	public boolean update() {
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("update NhaSanXuat set TenNSX=? where MaNSX=?"); 
+			
+			stmt.setString(1, tenNSX);
+			stmt.setString(2, maNSX);
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n > 0; 
+	}
 }
