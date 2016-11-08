@@ -120,4 +120,19 @@ public class NhaSanXuat {
 		}
 		return n > 0; 
 	}
+	public boolean delete() {
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("delete from NhaSanXuat where MaNSX = ?");
+			stmt.setString(1, maNSX);
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n > 0; 
+	}	
 }
