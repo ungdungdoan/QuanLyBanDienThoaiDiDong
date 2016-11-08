@@ -130,5 +130,48 @@ public class FrmNhaSanXuat extends JFrame implements ActionListener{
 			
 		}
 	}
+	
+	table.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		
+			napdulieuVaoTextfields();
+		}
+	});
+
+		
+	
+	
+
+		btnThem.addActionListener(this);
+		btnLuu.addActionListener(this);
+		btnSua.addActionListener(this);
+		btnXoa.addActionListener(this);
+		btnXemDSDT.addActionListener(this);
+
+	}
+@Override
+public void actionPerformed(ActionEvent e) {
+	Object o = e.getSource();
+	if(o.equals(btnThem)){
+		if(btnThem.getText().equalsIgnoreCase("Them")){
+			moKhoaTextfields(true);
+			moKhoaControls(false);
+			btnLuu.setEnabled(true);
+			btnThem.setEnabled(true);
+			xoaRongTextfields();
+			btnThem.setText("Huy");
+		}
+		else if(btnThem.getText().equalsIgnoreCase("Huy")){
+			moKhoaTextfields(false);
+			moKhoaControls(true);
+			btnLuu.setEnabled(false);
+			btnThem.setText("Them");
+			napdulieuVaoTextfields();
+			}
+
+		}
+	
+	}
 
 }
