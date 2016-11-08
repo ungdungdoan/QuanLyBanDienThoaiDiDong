@@ -1,0 +1,92 @@
+package entity;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.spi.DirStateFactory.Result;
+
+import db.Database;
+import db.DbUtils;
+
+
+
+public class NhaSanXuat {
+	private String maNSX;
+	private String tenNSX;
+	private List<DienThoai> dsDienThoai;
+
+	public NhaSanXuat(String maNSX, String tenNSX) {
+		
+		this.maNSX = maNSX;
+		this.tenNSX = tenNSX;
+		dsDienThoai = new ArrayList<DienThoai>();
+	}
+	public NhaSanXuat(String maNSX){
+		this(maNSX, "Tên nhà sản xuất");
+	}
+	
+	public NhaSanXuat(){
+		this("Mã nhà sản xuất");
+	}
+
+	public String getMaNSX() {
+		return maNSX;
+	}
+
+	public void setMaNSX(String maNSX) {
+		this.maNSX = maNSX;
+	}
+
+	public String getTenNSX() {
+		return tenNSX;
+	}
+
+	public void setTenNSX(String tenNSX) {
+		this.tenNSX = tenNSX;
+	}
+	public List<DienThoai> getDsDienThoai() {
+		return dsDienThoai;
+	}
+	@Override
+	public String toString() {
+		return "NhaSanXuat [tenNSX=" + tenNSX + "]";
+		
+	}
+	
+
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((maNSX == null) ? 0 : maNSX.hashCode());
+		result = prime * result + ((tenNSX == null) ? 0 : tenNSX.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NhaSanXuat other = (NhaSanXuat) obj;
+		if (maNSX == null) {
+			if (other.maNSX != null)
+				return false;
+		} else if (!maNSX.equals(other.maNSX))
+			return false;
+		if (tenNSX == null) {
+			if (other.tenNSX != null)
+				return false;
+		} else if (!tenNSX.equals(other.tenNSX))
+			return false;
+		return true;
+	}
+}
