@@ -119,4 +119,12 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 			dataModel.addRow(rowData);
 		}
 		
+		private void moKhoaControls(boolean b) {
+			
+			btnThem.setEnabled(b);
+			btnLuu.setEnabled(b);
+			btnSua.setEnabled(b);
+			btnXoa.setEnabled(b);
+			
+		}
 }
