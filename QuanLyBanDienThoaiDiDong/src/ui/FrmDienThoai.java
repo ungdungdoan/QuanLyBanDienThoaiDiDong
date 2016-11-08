@@ -127,4 +127,13 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 			btnXoa.setEnabled(b);
 			
 		}
+		
+		private void moKhoaTextfields(boolean b) {
+			txtmaDT.setEditable(b);
+			txtcauHinh.setEditable(b);
+			txttenDT.setEditable(b);
+			txtGia.setEditable(b);
+			
+			
+		}
 }
