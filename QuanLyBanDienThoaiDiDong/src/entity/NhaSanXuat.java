@@ -135,4 +135,25 @@ public class NhaSanXuat {
 		}
 		return n > 0; 
 	}	
+	public void read(){
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs =null;
+		
+		try {
+			stmt = con.prepareStatement("select *from DienThoai where MaNSX = ?");
+			stmt.setString(1, maNSX);
+			rs=stmt.executeQuery();
+			while(rs.next())
+			{
+				DienThoai dt = new DienThoai(rs.getString("maDT"), rs.getString("tenDT"), rs.getString("cauHinh"),rs.getInt("Gia"),this);
+				dsDienThoai.add(dt);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		
+	}
 }
