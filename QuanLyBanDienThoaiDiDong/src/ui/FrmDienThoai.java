@@ -136,4 +136,12 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 			
 			
 		}
+		private void xoaRongTextfields() {
+			txtmaDT.setText("");
+			txttenDT.setText("");
+			txtcauHinh.setText("");
+			txtGia.setText("");
+		
+			txtmaDT.requestFocus();
+		}
 }
