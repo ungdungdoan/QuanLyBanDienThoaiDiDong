@@ -121,5 +121,14 @@ public class FrmNhaSanXuat extends JFrame implements ActionListener{
 		txtTenNSX.setText("");
 		txtMaNSX.requestFocus();
 	}
+	
+	private void napdulieuVaoTextfields() {
+		int row = table.getSelectedRow();
+		if(row >= 0){
+			txtMaNSX.setText((String) table.getValueAt(row, 0));
+			txtTenNSX.setText((String) table.getValueAt(row, 1));
+			
+		}
+	}
 
 }
