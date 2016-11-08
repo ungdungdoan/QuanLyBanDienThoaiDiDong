@@ -109,4 +109,14 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 		lblcauHinh.setPreferredSize(lbltenDT.getPreferredSize());
 		lblGia.setPreferredSize(lbltenDT.getPreferredSize());
 	}
+	public FrmDienThoai(NhaSanXuat nsx){
+		this();
+		this.nsx= nsx;
+		scroll.setBorder(BorderFactory.createTitledBorder("Danh sách điện thoại của nhà sản xuất:  "+  nsx.getMaNSX()));
+		table.setRowHeight(25);
+		for(DienThoai dt : nsx.getDsDienThoai()){
+			Object[] rowData = {dt.getMaDT(),dt.getTenDT(),dt.getCauHinh(),dt.getGia()};
+			dataModel.addRow(rowData);
+		}
+		
 }
