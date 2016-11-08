@@ -187,22 +187,41 @@ public void actionPerformed(ActionEvent e) {
 			napdulieuVaoTextfields();
 			}
 		}
-		else if(o.equals(btnLuu)){
-		if(btnThem.getText().equalsIgnoreCase("Hủy")){
+		else if(o.equals(btnLuu))
+		{
+			if(btnThem.getText().equalsIgnoreCase("Hủy"))
+				{
+					NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
+					if(nsx.create())
+						{
+							Object[] rowData = {txtMaNSX.getText(), txtTenNSX.getText()};
+							dataModel.addRow(rowData);
+			
+							moKhoaTextfields(false);
+							moKhoaControls(true);
+							btnLuu.setEnabled(false);
+							btnThem.setText("Thêm");
+						}
+				}
+	
+		}else if(btnSua.getText().equalsIgnoreCase("Hủy")){
+			int row = table.getSelectedRow();
+			if(row>=0)
+			{
 			NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
-			if(nsx.create()){
-				Object[] rowData = {txtMaNSX.getText(), txtTenNSX.getText()};
-				dataModel.addRow(rowData);
-
+			if(nsx.update()){
+				table.setValueAt(nsx.getTenNSX(), row, 1);
 				moKhoaTextfields(false);
 				moKhoaControls(true);
 				btnLuu.setEnabled(false);
-				btnThem.setText("Thêm");
-
-			
+				btnSua.setText("Sửa");
+				}
 			}
 		}
 	
 	}
 
 }
+
+
+
