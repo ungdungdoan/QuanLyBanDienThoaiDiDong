@@ -22,19 +22,13 @@ public class DienThoai {
 		return maDT;
 	}
 	
-	
-
 	public int getGia() {
 		return Gia;
 	}
 
-
-
 	public void setGia(int gia) {
 		Gia = gia;
 	}
-
-
 
 	public void setMaDT(String maDT) {
 		this.maDT = maDT;
@@ -58,9 +52,6 @@ public class DienThoai {
 		this.cauHinh = cauHinh;
 	}
 
-
-	
-	
 	public DienThoai(String maDT, String tenDT, String cauHinh, int gia, NhaSanXuat nSX) {
 		super();
 		this.maDT = maDT;
@@ -70,7 +61,6 @@ public class DienThoai {
 		Gia = gia;
 	}
 
-	
 	public DienThoai(String maDT){
 		this(maDT,"","",0,new NhaSanXuat(maDT));
 	}
@@ -79,18 +69,11 @@ public class DienThoai {
 		this("Mã điện thoại");
 	}
 
-	
-
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		return "DienThoai [maDT=" + maDT + ", tenDT=" + tenDT + ", NSX=" + NSX + ", cauHinh=" + cauHinh + ", Gia=" + Gia
 				+ "]";
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -147,6 +130,21 @@ public class DienThoai {
 			stmt.setInt(3, Gia);
 			stmt.setString(4, maDT);
 		
+			n = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n > 0;
+	}
+	public boolean delete() {
+		Connection con = Database.getConnection();
+		PreparedStatement stmt = null;
+		int n = 0;
+		try {
+			stmt = con.prepareStatement("delete from DienThoai where MaDT = ?");
+			stmt.setString(1, maDT);
 			n = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
