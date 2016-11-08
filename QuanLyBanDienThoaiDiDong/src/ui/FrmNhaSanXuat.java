@@ -204,24 +204,39 @@ public void actionPerformed(ActionEvent e) {
 						}
 				}
 	
-		}else if(btnSua.getText().equalsIgnoreCase("Hủy")){
-			int row = table.getSelectedRow();
-			if(row>=0)
-			{
-			NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
-			if(nsx.update()){
-				table.setValueAt(nsx.getTenNSX(), row, 1);
-				moKhoaTextfields(false);
-				moKhoaControls(true);
-				btnLuu.setEnabled(false);
-				btnSua.setText("Sửa");
-				}
-			}
 		}
-	
-	}
-
+		else if(btnSua.getText().equalsIgnoreCase("Hủy"))
+			{
+				int row = table.getSelectedRow();
+				if(row>=0)
+				{
+				NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
+				if(nsx.update())
+					{
+						table.setValueAt(nsx.getTenNSX(), row, 1);
+						moKhoaTextfields(false);
+						moKhoaControls(true);
+						btnLuu.setEnabled(false);
+						btnSua.setText("Sửa");
+					}
+				}
+			}else if(o.equals(btnXemDSDT))
+				{
+					int row = table.getSelectedRow();
+					if(row >= 0)
+					{
+						NhaSanXuat nsx = new NhaSanXuat(txtMaNSX.getText(), txtTenNSX.getText());
+						nsx.read();
+						FrmDienThoai frm = new FrmDienThoai(nsx);
+						frm.setVisible(true);
+					}
+				}
+		}
+		
 }
+
+
+
 
 
 
