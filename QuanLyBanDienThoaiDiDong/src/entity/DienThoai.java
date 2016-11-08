@@ -114,4 +114,27 @@ public class DienThoai {
 			return false;
 		return true;
 	}
+	public boolean create()
+	{
+		Connection con = Database.getConnection();
+		PreparedStatement stmt =null;
+		int n =0;
+		try {
+			stmt=con.prepareStatement("insert into DienThoai values(?,?,?,?,?)");
+			stmt.setString(1, maDT);
+			stmt.setString(2, tenDT);
+			stmt.setString(3, cauHinh);
+			stmt.setInt(4, Gia);
+			stmt.setString(5, NSX.getMaNSX());
+					n= stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DbUtils.close(stmt);
+		}
+		return n >0;
+	}
+	
 }
