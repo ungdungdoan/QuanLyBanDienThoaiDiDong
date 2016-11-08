@@ -144,4 +144,16 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 		
 			txtmaDT.requestFocus();
 		}
+		protected void napDuLieuTextfields() {
+			int row = table.getSelectedRow();
+			if(row >= 0){
+				txtmaDT.setText(table.getValueAt(row, 0)+"");
+				txttenDT.setText(table.getValueAt(row, 1)+"");
+				txtcauHinh.setText(table.getValueAt(row, 2)+"");
+				txtGia.setText(table.getValueAt(row, 3)+"");
+			
+
+				}
+			
+			}
 }
