@@ -156,8 +156,24 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 					napDuLieuTextfields();
 				
 				}
+			}else if(o.equals(btnLuu)){
+			if(btnThem.getText().equalsIgnoreCase("Hủy")){
+					DienThoai dt = new DienThoai(txtmaDT.getText(), txttenDT.getText(),txtcauHinh.getText(),Integer.parseInt(txtGia.getText()),nsx);
+				if(dt.create()){
+					Object[] rowData = {txtmaDT.getText(), txttenDT.getText(),txtcauHinh.getText(),txtGia.getText()};
+					dataModel.addRow(rowData);
+
+					moKhoaTextfields(false);
+					moKhoaControls(true);
+					btnLuu.setEnabled(false);
+					btnThem.setText("Thêm");		
+				
+				}
 			}
+		}
+			
 	}
+	
 		private void moKhoaControls(boolean b) {
 			
 			btnThem.setEnabled(b);
