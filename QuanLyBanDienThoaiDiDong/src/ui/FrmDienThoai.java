@@ -119,6 +119,45 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 			dataModel.addRow(rowData);
 		}
 		
+		table.addMouseListener(new MouseAdapter()
+		{
+			public void mouseClicked(MouseEvent e)
+			{
+			napDuLieuTextfields();
+			}
+			
+		});
+		btnThem.addActionListener(this);
+		btnLuu.addActionListener(this);
+		btnSua.addActionListener(this);
+		btnXoa.addActionListener(this);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) 
+		{
+			Object o = e.getSource();
+			if(o.equals(btnThem))
+				{
+				if(btnThem.getText().equalsIgnoreCase("Thêm"))
+				{
+					moKhoaTextfields(true);
+					moKhoaControls(false);
+					btnLuu.setEnabled(true);
+					btnThem.setEnabled(true);
+					xoaRongTextfields();
+					btnThem.setText("Hủy");
+				}
+				else if(btnThem.getText().equalsIgnoreCase("Hủy"))
+				{
+					moKhoaTextfields(false);
+					moKhoaControls(true);
+					btnLuu.setEnabled(false);
+					btnThem.setText("Thêm");
+					napDuLieuTextfields();
+				
+				}
+			}
+	}
 		private void moKhoaControls(boolean b) {
 			
 			btnThem.setEnabled(b);
@@ -144,16 +183,19 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 		
 			txtmaDT.requestFocus();
 		}
-		protected void napDuLieuTextfields() {
-			int row = table.getSelectedRow();
-			if(row >= 0){
-				txtmaDT.setText(table.getValueAt(row, 0)+"");
-				txttenDT.setText(table.getValueAt(row, 1)+"");
-				txtcauHinh.setText(table.getValueAt(row, 2)+"");
-				txtGia.setText(table.getValueAt(row, 3)+"");
+		protected void napDuLieuTextfields()
+			{
+				int row = table.getSelectedRow();
+				if(row >= 0)
+				{
+					txtmaDT.setText(table.getValueAt(row, 0)+"");
+					txttenDT.setText(table.getValueAt(row, 1)+"");
+					txtcauHinh.setText(table.getValueAt(row, 2)+"");
+					txtGia.setText(table.getValueAt(row, 3)+"");
 			
 
 				}
 			
 			}
+		
 }
