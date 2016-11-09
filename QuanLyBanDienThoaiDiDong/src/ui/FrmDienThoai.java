@@ -169,6 +169,21 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 					btnThem.setText("Thêm");		
 				
 				}
+			}else if(o.equals(btnSua)){
+				if(btnSua.getText().equalsIgnoreCase("Sửa")){
+					moKhoaTextfields(true);
+					txtmaDT.setEditable(false);
+					moKhoaControls(false);
+					btnLuu.setEnabled(true);
+					btnSua.setEnabled(true);
+					btnSua.setText("Hủy");
+				}else if(btnSua.getText().equalsIgnoreCase("Hủy")){
+					moKhoaTextfields(false);
+					moKhoaControls(true);
+					btnLuu.setEnabled(false);
+					btnSua.setText("Sửa");
+					napDuLieuTextfields();
+				}
 			}
 		}
 			
