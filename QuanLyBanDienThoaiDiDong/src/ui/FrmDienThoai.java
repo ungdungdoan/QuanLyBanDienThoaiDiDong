@@ -184,6 +184,18 @@ public class FrmDienThoai extends JDialog implements ActionListener {
 					btnSua.setText("Sửa");
 					napDuLieuTextfields();
 				}
+			}else if(o.equals(btnXoa))
+			{
+				int row = table.getSelectedRow();
+				if(row >= 0)
+				{
+					DienThoai dt = new DienThoai(txtmaDT.getText());
+					if(dt.delete()){
+						dataModel.removeRow(row);
+						xoaRongTextfields();
+				
+					}
+				}
 			}
 		}
 			
